@@ -15,6 +15,7 @@ public class Student {
         this.firstname = firstname;
         this.lastname = lastname;
         this.birthday = birthday;
+        this.index = count.incrementAndGet();
 
     }
 
