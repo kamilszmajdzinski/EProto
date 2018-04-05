@@ -9,7 +9,28 @@ public class Grade {
     private int id;
 
 
-    public Grade(float value, Date date, Course course) {
+    public float getValue() {
+        return value;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Grade(){
+        this.id = count.incrementAndGet();
+        this.date = new Date();
+    }
+
+    public Grade(float value, Course course) {
         this.value = value;
         this.date = new Date();
         this.course = course;
