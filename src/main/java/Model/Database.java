@@ -2,6 +2,7 @@ package Model;
 
 import javax.xml.ws.Response;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Database {
@@ -13,7 +14,29 @@ public class Database {
 
     public Database(){
 
+        courses.add(new Course("WF", "Janek Stanek"));
+        courses.add(new Course("IT", "Robert Brylewski"));
+        courses.add(new Course("Integracja", "Patryk Kuśmierkiewicz"));
 
+
+        grades.add(new Grade((float) 3.5, getCourseByName("WF")));
+        grades.add(new Grade((float) 4, getCourseByName("IT")));
+        grades.add(new Grade((float) 5, getCourseByName("Integracja")));
+        students.add(new Student("Adam", "Kokosza", new Date(1995, 8, 10), grades));
+
+        grades = new ArrayList<>();
+
+        grades.add(new Grade((float) 5, getCourseByName("WF")));
+        grades.add(new Grade((float) 5, getCourseByName("IT")));
+        grades.add(new Grade((float) 3, getCourseByName("Integracja")));
+        students.add(new Student("Murzynek", "Bambo", new Date(1995, 12, 24), grades));
+
+        grades = new ArrayList<>();
+
+        grades.add(new Grade((float) 4, getCourseByName("WF")));
+        grades.add(new Grade((float) 4.5, getCourseByName("IT")));
+        grades.add(new Grade((float) 5, getCourseByName("Integracja")));
+        students.add(new Student("Przemysław", "Wojtczak", new Date(1994, 4, 1), grades));
 
     }
 
