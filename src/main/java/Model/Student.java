@@ -24,6 +24,18 @@ public class Student {
 
     }
 
+    public int getIndex() {
+        return index;
+    }
+
+    public List<Grade> getGrades() {
+        return grades;
+    }
+
+    public void setIndex(int index) {this.index = index;}
+
+    public void setGrades(List<Grade> grades) { this.grades = grades; }
+
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }

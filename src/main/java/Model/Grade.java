@@ -14,6 +14,22 @@ public class Grade {
     private int id;
 
 
+    public void setValue(float value) {
+        this.value = value;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public float getValue() {
         return value;
     }
@@ -26,7 +42,7 @@ public class Grade {
         return course;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
