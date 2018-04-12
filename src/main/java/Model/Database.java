@@ -78,6 +78,7 @@ public class Database {
                 return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).build();
             }
         }
+        newStudent.setIndex(index);
         students.add(newStudent);
         return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.CREATED).build();
     }
