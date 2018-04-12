@@ -1,5 +1,7 @@
 package Model;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +15,11 @@ public class Student {
     private String firstname;
     private String lastname;
     private Date birthday;
-    private List<Grade> grades = new ArrayList<Grade>();
+    private List<Grade> grades = new ArrayList<>();
+
+    public Student(){
+
+    }
 
     public Student(String firstname, String lastname, Date birthday, List<Grade> grades) {
         this.firstname = firstname;
@@ -23,11 +29,11 @@ public class Student {
         this.grades = grades;
 
     }
-
+@XmlAttribute
     public int getIndex() {
         return index;
     }
-
+@XmlElement
     public List<Grade> getGrades() {
         return grades;
     }
@@ -39,7 +45,7 @@ public class Student {
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
-
+    @XmlElement
     public String getFirstname() {
         return firstname;
     }
@@ -47,7 +53,7 @@ public class Student {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
+    @XmlElement
     public String getLastname() {
         return lastname;
     }
@@ -55,7 +61,7 @@ public class Student {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
-
+    @XmlElement
     public Date getBirthday() {
         return birthday;
     }

@@ -14,29 +14,22 @@ public class Database {
 
     public Database(){
 
-        courses.add(new Course("WF", "Janek Stanek"));
-        courses.add(new Course("IT", "Robert Brylewski"));
-        courses.add(new Course("Integracja", "Patryk Kuśmierkiewicz"));
+        courses.add(new Course("Gościowanie", "Karol Karolek"));
+        courses.add(new Course("Pomidor", "Smarki smark"));
+        courses.add(new Course("Duze elo bęc", "Tiger Bonzo"));
 
 
-        grades.add(new Grade((float) 3.5, getCourseByName("WF")));
-        grades.add(new Grade((float) 4, getCourseByName("IT")));
-        grades.add(new Grade((float) 5, getCourseByName("Integracja")));
-        students.add(new Student("Adam", "Kokosza", new Date(1995, 8, 10), grades));
+        grades.add(new Grade((float)3, getCourseById(1)));
+        grades.add(new Grade((float)4, getCourseById(2)));
+        grades.add(new Grade((float)5, getCourseById(3)));
 
-        grades = new ArrayList<>();
+        students.add(new Student("Kamik", "Kamilek", new Date(1995, 11, 21), grades));
 
-        grades.add(new Grade((float) 5, getCourseByName("WF")));
-        grades.add(new Grade((float) 5, getCourseByName("IT")));
-        grades.add(new Grade((float) 3, getCourseByName("Integracja")));
-        students.add(new Student("Murzynek", "Bambo", new Date(1995, 12, 24), grades));
 
-        grades = new ArrayList<>();
+//        students.add(new Student("Kuba", "Kubalski", new Date(1995, 12, 24), grades));
+//        students.add(new Student("Kajetan", "Kajetanowicz", new Date(1994, 4, 1), grades));
 
-        grades.add(new Grade((float) 4, getCourseByName("WF")));
-        grades.add(new Grade((float) 4.5, getCourseByName("IT")));
-        grades.add(new Grade((float) 5, getCourseByName("Integracja")));
-        students.add(new Student("Przemysław", "Wojtczak", new Date(1994, 4, 1), grades));
+
 
     }
 
@@ -70,7 +63,7 @@ public class Database {
         return null;
     }
 
-    public void putStudent(Student student){
+    public void postStudent(Student student){
         students.add(student);
     }
 
