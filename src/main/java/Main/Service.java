@@ -8,7 +8,6 @@ import Model.Grade;
 import Model.Student;
 
 import javax.ws.rs.*;
-
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -35,7 +34,9 @@ public class Service {
     @Path("/students/{index}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Student getStudentByIndex(@PathParam("index") int index){
-        return dataBase.getStudentByIndex(index);
+        if (dataBase.getStudentByIndex(index) != null) return dataBase.getStudentByIndex(index);
+        else
+            throw new NotFoundException(new JsonError("Error", "Student with index " + String.valueOf(index) + " was not found."));
     }
 
     @GET
@@ -48,7 +49,10 @@ public class Service {
     @Path("/students/{index}/grades/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Grade getStudentGrade(@PathParam("index") int index, @PathParam("id") int id){
-        return dataBase.getGradeofStudent(index, id);
+        if (dataBase.getGradeofStudent(index, id) != null){
+            return dataBase.getGradeofStudent(index, id);
+        }else
+            throw new NotFoundException(new JsonError("Error", "Grade" + String.valueOf(id)+ "of student" + String.valueOf(index)));
     }
 
     @GET
@@ -62,7 +66,10 @@ public class Service {
     @Path("/courses/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Course getCourses(@PathParam("id") int id){
-        return dataBase.getCourseById(id);
+        if (dataBase.getCourseById(id) != null) {
+            return dataBase.getCourseById(id);
+        }else
+            throw new NotFoundException(new JsonError("Error", "Course" + String.valueOf(id) + "not found"));
     }
 
 
@@ -70,8 +77,8 @@ public class Service {
     @POST
     @Path("/students")
     public Response postStudent(Student student){
-        dataBase.postStudent(student);
-        return Response.status(Response.Status.CREATED).build();
+        Student newStudent = dataBase.postStudent(student);
+        return Response.status(Response.Status.CREATED).header("Location", "/students/" + newStudent.getIndex()).build();
     }
 
     @POST

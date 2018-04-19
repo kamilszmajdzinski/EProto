@@ -1,8 +1,14 @@
 package Model;
 
+import org.glassfish.jersey.linking.InjectLink;
+import org.glassfish.jersey.linking.InjectLinks;
+
+import javax.ws.rs.core.Link;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +22,17 @@ public class Student {
     private String lastname;
     private Date birthday;
     private List<Grade> grades = new ArrayList<>();
+
+
+    @InjectLinks({
+            @InjectLink(value = "/students/{index}", rel = "self"),
+            @InjectLink(value = "/students", rel = "parent"),
+            @InjectLink(value = "/students/{index}/grades", rel = "grades")
+    })
+    @XmlElement(name = "link")
+    @XmlElementWrapper(name = "links")
+    @XmlJavaTypeAdapter(Link.JaxbAdapter.class)
+    List<Link> links;
 
     public Student(){
 

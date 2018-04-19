@@ -4,12 +4,17 @@ import javax.xml.ws.Response;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Database {
 
     private static List<Student> students = new ArrayList<>();
     private static List<Course> courses = new ArrayList<>();
     private static List<Grade> grades = new ArrayList<>();
+
+    private static AtomicInteger studentCounter = new AtomicInteger(0);
+    private static AtomicInteger courseCounter = new AtomicInteger(0);
+    private static AtomicInteger gradeCounter = new AtomicInteger(0);
 
 
     public Database(){
@@ -19,9 +24,9 @@ public class Database {
         courses.add(new Course("Duze elo bęc", "Tiger Bonzo"));
 
 
-        grades.add(new Grade((float)3, getCourseById(1)));
-        grades.add(new Grade((float)4, getCourseById(2)));
-        grades.add(new Grade((float)5, getCourseById(3)));
+        grades.add(new Grade((float)3, getCourseById(1),1));
+        grades.add(new Grade((float)4, getCourseById(2), 1));
+        grades.add(new Grade((float)5, getCourseById(3), 1));
 
         students.add(new Student("Kamik", "Kamilek", new Date(1995, 11, 21), grades));
 
@@ -63,8 +68,10 @@ public class Database {
         return null;
     }
 
-    public void postStudent(Student student){
+    public Student postStudent(Student student){
+        student.setIndex(studentCounter.incrementAndGet());
         students.add(student);
+        return student;
     }
 
     public javax.ws.rs.core.Response putStudent(int index, Student newStudent){
@@ -108,6 +115,7 @@ public class Database {
     }
 
     public void postCourse (Course course) {
+        course.setId(courseCounter.incrementAndGet());
         courses.add(course);
     }
 
@@ -133,6 +141,7 @@ public class Database {
 
 
     public void postGrade(int index, Grade grade){
+        grade.setId(gradeCounter.incrementAndGet());
         for (Student student : students) {
             if (student.getIndex() == index) {
                 List<Grade> _grades = student.getGrades();
@@ -147,6 +156,7 @@ public class Database {
             if (student.getIndex() == index) {
                 for (Grade grade : student.getGrades()){
                     if (grade.getId() == id){
+                        grade.setStudentIndex(index);
                         grade.setValue(newGrade.getValue());
                         grade.setCourse(newGrade.getCourse());
                         grade.setDate(newGrade.getDate());
