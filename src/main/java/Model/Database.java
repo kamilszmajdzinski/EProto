@@ -19,16 +19,16 @@ public class Database {
 
     public Database(){
 
-        courses.add(new Course("Gościowanie", "Karol Karolek"));
-        courses.add(new Course("Pomidor", "Smarki smark"));
-        courses.add(new Course("Duze elo bęc", "Tiger Bonzo"));
+        //courses.add(new Course("Gościowanie", "Karol Karolek"));
+//        courses.add(new Course("Pomidor", "Smarki smark"));
+//        courses.add(new Course("Duze elo bęc", "Tiger Bonzo"));
 
 
-        grades.add(new Grade((float)3, getCourseById(1),1));
-        grades.add(new Grade((float)4, getCourseById(2), 1));
-        grades.add(new Grade((float)5, getCourseById(3), 1));
+        //grades.add(new Grade((float)3, getCourseById(1),1));
+//        grades.add(new Grade((float)4, getCourseById(2), 1));
+//        grades.add(new Grade((float)5, getCourseById(3), 1));
 
-        students.add(new Student("Kamik", "Kamilek", new Date(1995, 11, 21), grades));
+        //students.add(new Student("Kamik", "Kamilek", new Date(1995, 11, 21), grades));
 
 
 //        students.add(new Student("Kuba", "Kubalski", new Date(1995, 12, 24), grades));
@@ -69,6 +69,11 @@ public class Database {
     }
 
     public Student postStudent(Student student){
+        for (Student student1 : students) {
+            System.out.println(student1.getIndex());
+        }
+
+        System.out.println("-------------");
         student.setIndex(studentCounter.incrementAndGet());
         students.add(student);
         return student;
@@ -97,7 +102,13 @@ public class Database {
     }
 
     public static List<Course> getCourses() {
+
+        for(Course course : courses) {
+            System.out.println(course.getName());
+        }
+
         return courses;
+
     }
 
     public Course getCourseById(int id){
@@ -107,12 +118,7 @@ public class Database {
         return null;
     }
 
-    private Course getCourseByName(String name){
-        for (Course course : courses) {
-            if (course.getName() == name) return course;
-        }
-        return null;
-    }
+
 
     public void postCourse (Course course) {
         course.setId(courseCounter.incrementAndGet());
