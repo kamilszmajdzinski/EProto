@@ -44,5 +44,12 @@
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.2.11" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-core:2.2.11" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.11" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver:3.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:3.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:bson:3.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb.morphia:morphia:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongo-java-driver:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.thoughtworks.proxytoys:proxytoys:1.0" level="project" />
+    <orderEntry type="library" name="Maven: cglib:cglib-nodep:2.2.2" level="project" />
   </component>
 </module>

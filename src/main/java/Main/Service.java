@@ -15,8 +15,21 @@ import java.util.List;
 @Path("/")
 public class Service {
 
+
     private final Database dataBase = new Database();
     private final List<Student> studentList = dataBase.getStudents();
+
+//    @OPTIONS
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response options(){
+//        return Response.ok()
+//                .header("Access-Control-Allow-Origin", "*")
+//
+//                .header("Content-Type", "application/json")
+//                .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+//                .build();
+//
+//    }
 
     @GET
     @Path("/students")

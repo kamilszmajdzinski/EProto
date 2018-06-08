@@ -2,6 +2,7 @@ package Model;
 
 import org.glassfish.jersey.linking.InjectLink;
 import org.glassfish.jersey.linking.InjectLinks;
+import org.mongodb.morphia.annotations.Entity;
 
 import javax.ws.rs.core.Link;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @XmlRootElement
+@Entity("students")
 public class Student {
     private static final AtomicInteger count = new AtomicInteger(0);
     private int index;
@@ -37,6 +39,7 @@ public class Student {
     public Student(){
 
     }
+
 
     public Student(String firstname, String lastname, Date birthday, List<Grade> grades) {
         this.firstname = firstname;
